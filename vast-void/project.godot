@@ -17,11 +17,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*res://managers/SignalBus.cs"
+IdleClock="*res://components/IdleClock.tscn"
 
 [display]
 
 window/size/viewport_width=1200
 window/size/viewport_height=675
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -29,5 +31,6 @@ project/assembly_name="vast-void"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

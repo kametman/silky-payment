@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://j0fdq4italql"]
+[gd_scene load_steps=2 format=3 uid="uid://j0fdq4italql"]
 
 [ext_resource type="Script" path="res://scenes/sandbox/TimerTest.cs" id="1_xuskv"]
-[ext_resource type="PackedScene" uid="uid://hcbdae2qy650" path="res://components/IdleClock.tscn" id="2_7kq4t"]
 
-[node name="TimerTest" type="Node2D" node_paths=PackedStringArray("_clock1", "_smTickCountLabel", "_lgTickCountLabel")]
+[node name="TimerTest" type="Node2D" node_paths=PackedStringArray("_smTickCountLabel", "_lgTickCountLabel")]
 script = ExtResource("1_xuskv")
-_clock1 = NodePath("IdleClock")
 _smTickCountLabel = NodePath("UI/SmTickCount")
 _lgTickCountLabel = NodePath("UI/LgTickCount")
 
@@ -34,7 +32,3 @@ offset_top = 255.0
 offset_right = 434.0
 offset_bottom = 342.0
 theme_override_font_sizes/font_size = 12
-
-[node name="IdleClock" parent="." instance=ExtResource("2_7kq4t")]
-_tickLength = 1.0
-_bigTickCount = 5

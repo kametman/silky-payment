@@ -23,8 +23,15 @@ public partial class IdleClock : Node
 		_clockTimer.WaitTime = _tickLength;
     }
 
+	public void SetClockParams(float tickLength, ulong bigTickCount)
+	{
+		_clockTimer.WaitTime = tickLength;
+		_bigTickCount = bigTickCount;
+	}
+
 	public void StartClock()
 	{
+		_clockPause = false;
 		_clockTimer.Start();
 	}
 

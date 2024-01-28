@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpl0100vvrw2y"]
+
+[ext_resource type="Texture2D" uid="uid://rk2liiunrpxi" path="res://assets/sprites/nomad.png" id="1_p10wi"]
+[ext_resource type="Script" path="res://scenes/sandbox/PlayerPath.cs" id="1_ta15j"]
+
+[sub_resource type="Curve2D" id="Curve2D_b82uo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 110, 219, 0, 0, 0, 0, 237, 265, 0, 0, 0, 0, 183, 370, 0, 0, 0, 0, 314, 366, 0, 0, 0, 0, 328, 475, 0, 0, 0, 0, 411, 424, 0, 0, 0, 0, 595, 445, 0, 0, 0, 0, 696, 380, 0, 0, 0, 0, 664, 294, 0, 0, 0, 0, 777, 245, 0, 0, 0, 0, 659, 198, 0, 0, 0, 0, 610, 113, 0, 0, 0, 0, 509, 179, 0, 0, 0, 0, 412, 201, 0, 0, 0, 0, 323, 117)
+}
+point_count = 15
+
+[node name="PathingTest" type="Node2D"]
+
+[node name="PlayerPath" type="Node2D" parent="." node_paths=PackedStringArray("_environmentPath", "_playerSprite", "_clockButton")]
+script = ExtResource("1_ta15j")
+_environmentPath = NodePath("Path2D")
+_playerSprite = NodePath("Sprite2D")
+_playerSpeed = 100.0
+_clockButton = NodePath("../UI/ClockButton")
+
+[node name="Path2D" type="Path2D" parent="PlayerPath"]
+curve = SubResource("Curve2D_b82uo")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerPath"]
+position = Vector2(685, 87)
+scale = Vector2(2, 2)
+texture = ExtResource("1_p10wi")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1200.0
+offset_bottom = 675.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ClockButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -172.0
+offset_top = -81.0
+offset_right = -63.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "PAUSE"
+
+[connection signal="pressed" from="UI/ClockButton" to="PlayerPath" method="OnClockButtonPressed"]

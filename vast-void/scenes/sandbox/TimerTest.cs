@@ -4,7 +4,11 @@ using VastVoid.Managers;
 
 public partial class TimerTest : Node2D
 {
-	[Export]private IdleClock _clock1;
+	private IdleClock _clock1;
+
+	[Export]private float _tickLength = 1;
+	[Export]private ulong _bigTickCount = 5;
+
 	[Export]private Label _smTickCountLabel;
 	[Export]private Label _lgTickCountLabel;
 
@@ -15,9 +19,21 @@ public partial class TimerTest : Node2D
 		_smTickCount = 0;
 		_lgTickCount = 0;
 
+		InitializeEvents();		
+		InitializeClock();
+	}
+
+	private void InitializeEvents()
+	{
 		SignalBus.Instance.ClockShortTicked += () => _smTickCount++;
 		SignalBus.Instance.ClockLongTicked += () => _lgTickCount++;
-		
+	}
+
+	private void InitializeClock()
+	{
+		_clock1 = GetNode<IdleClock>("/root/IdleClock");
+		_clock1.PauseClock();
+		_clock1.SetClockParams(_tickLength, _bigTickCount);
 		_clock1.StartClock();
 	}
 
