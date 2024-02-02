@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using VastVoid.Components;
 using VastVoid.Managers;
 
@@ -45,7 +44,7 @@ public partial class PlayerPath : Node2D
 		}
 
 		_isPlayerMoving = true;
-		_clock1.PauseClock();
+		//_clock1.PauseClock();
 		var nextPoint = _environmentPath.Curve.GetPointPosition(++_currentPoint % _environmentPath.Curve.PointCount);
 		var travelTime = (nextPoint - _playerSprite.Position).Length() / _playerSpeed;
 

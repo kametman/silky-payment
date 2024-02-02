@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpl0100vvrw2y"]
+[gd_scene load_steps=6 format=3 uid="uid://dpl0100vvrw2y"]
 
-[ext_resource type="Texture2D" uid="uid://rk2liiunrpxi" path="res://assets/sprites/nomad.png" id="1_p10wi"]
 [ext_resource type="Script" path="res://scenes/sandbox/PlayerPath.cs" id="1_ta15j"]
+[ext_resource type="Script" path="res://scenes/sandbox/PathingTest.cs" id="1_u8fxg"]
+[ext_resource type="Texture2D" uid="uid://rk2liiunrpxi" path="res://assets/sprites/nomad.png" id="2_kc216"]
+[ext_resource type="PackedScene" uid="uid://dhxstqph5crc1" path="res://components/ProgressMeter.tscn" id="4_dvgls"]
 
 [sub_resource type="Curve2D" id="Curve2D_b82uo"]
 _data = {
@@ -9,13 +11,15 @@ _data = {
 }
 point_count = 15
 
-[node name="PathingTest" type="Node2D"]
+[node name="PathingTest" type="Node2D" node_paths=PackedStringArray("_meter1")]
+script = ExtResource("1_u8fxg")
+_meter1 = NodePath("ProgressMeter")
 
 [node name="PlayerPath" type="Node2D" parent="." node_paths=PackedStringArray("_environmentPath", "_playerSprite", "_clockButton")]
 script = ExtResource("1_ta15j")
 _environmentPath = NodePath("Path2D")
 _playerSprite = NodePath("Sprite2D")
-_playerSpeed = 100.0
+_playerSpeed = 25.0
 _clockButton = NodePath("../UI/ClockButton")
 
 [node name="Path2D" type="Path2D" parent="PlayerPath"]
@@ -23,8 +27,11 @@ curve = SubResource("Curve2D_b82uo")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerPath"]
 position = Vector2(685, 87)
-scale = Vector2(2, 2)
-texture = ExtResource("1_p10wi")
+texture = ExtResource("2_kc216")
+
+[node name="ProgressMeter" parent="." instance=ExtResource("4_dvgls")]
+position = Vector2(871, 122)
+CurrentValue = 5
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -35,6 +42,7 @@ offset_right = 1200.0
 offset_bottom = 675.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="ClockButton" type="Button" parent="UI"]
 layout_mode = 1
