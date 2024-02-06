@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="vast-void"
+run/main_scene="res://scenes/MainGame.tscn"
 config/features=PackedStringArray("4.1", "C#", "Mobile")
 config/icon="res://icon.svg"
 
@@ -21,16 +22,20 @@ IdleClock="*res://components/IdleClock.tscn"
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=675
+window/size/viewport_width=400
+window/size/viewport_height=225
 window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="vast-void"
 
+[layer_names]
+
+2d_physics/layer_8="cards"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.12549, 0.12549, 0.12549, 1)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj7twxghy81au"]
+
+[ext_resource type="PackedScene" uid="uid://dhxstqph5crc1" path="res://components/ProgressMeter.tscn" id="1_ci52g"]
+[ext_resource type="Script" path="res://components/HealthMeter.cs" id="1_tjvgg"]
+
+[node name="HealthMeter" type="Node2D"]
+script = ExtResource("1_tjvgg")
+CurrentHealth = 75
+
+[node name="MeterB" parent="." instance=ExtResource("1_ci52g")]
+position = Vector2(32, 4)
+rotation = 3.14159
+scale = Vector2(4, 4)
+CurrentValue = 25
+MeterColor = Color(1, 0, 0, 1)
+
+[node name="MeterA" parent="." instance=ExtResource("1_ci52g")]
+scale = Vector2(4, 4)
+CurrentValue = 75
+MeterColor = Color(0, 1, 0, 1)
+metadata/_edit_lock_ = true

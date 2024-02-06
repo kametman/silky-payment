@@ -7,10 +7,12 @@ public partial class PlayerPath : Node2D
 	private IdleClock _clock1;
 
 	[Export]private Path2D _environmentPath;
-	[Export]private Sprite2D _playerSprite;
+	[Export]private Node2D _playerNode;
 	[Export]private float _playerSpeed = 50f;
 
 	[Export]private Button _clockButton;
+
+	private PackedScene _pathLinePrefab;
 	
 	private int _currentPoint = 0;
 	private bool _isPlayerMoving = false;
@@ -18,19 +20,22 @@ public partial class PlayerPath : Node2D
 
 	public override void _Ready()
 	{
+		_pathLinePrefab = ResourceLoader.Load<PackedScene>("uid://y5y1nv34jpb2");
 		var firstPoint = _environmentPath.Curve.GetPointPosition(0);
-		_playerSprite.Position = firstPoint;
+		_playerNode.Position = firstPoint;
 
 		InitializeClock();
 
 		SignalBus.Instance.ClockShortTicked += () => MoveToNextPointOnPath();
+
+		CreateAPathLine();
 	}
 
 	private void InitializeClock()
 	{
 		_clock1 = GetNode<IdleClock>("/root/IdleClock");
 		_clock1.PauseClock();
-		_clock1.SetClockParams(1, 5);
+		_clock1.SetClockParams(0.25f, 5);
 		_clock1.StartClock();
 	}
 
@@ -46,11 +51,11 @@ public partial class PlayerPath : Node2D
 		_isPlayerMoving = true;
 		//_clock1.PauseClock();
 		var nextPoint = _environmentPath.Curve.GetPointPosition(++_currentPoint % _environmentPath.Curve.PointCount);
-		var travelTime = (nextPoint - _playerSprite.Position).Length() / _playerSpeed;
+		var travelTime = (nextPoint - _playerNode.Position).Length() / _playerSpeed;
 
 
 		var moveTween = CreateTween();
-		moveTween.TweenProperty(_playerSprite, "position", nextPoint, travelTime);
+		moveTween.TweenProperty(_playerNode, "position", nextPoint, travelTime);
 		moveTween.TweenCallback(Callable.From(() => 
 		{ 
 			_isPlayerMoving = false; 
@@ -77,5 +82,16 @@ public partial class PlayerPath : Node2D
 			_clock1.StartClock();
 		}
 
+	}
+
+	private void CreateAPathLine()
+	{
+		var firstPoint = _environmentPath.Curve.GetPointPosition(0);
+		var secondPoint = _environmentPath.Curve.GetPointPosition(1);
+
+		var newPathLine = _pathLinePrefab.Instantiate<PathLine>();
+		newPathLine.Init(firstPoint, secondPoint, 10f);
+
+		AddChild(newPathLine);
 	}
 }

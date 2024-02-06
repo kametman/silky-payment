@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpl0100vvrw2y"]
+[gd_scene load_steps=7 format=3 uid="uid://dpl0100vvrw2y"]
 
 [ext_resource type="Script" path="res://scenes/sandbox/PlayerPath.cs" id="1_ta15j"]
 [ext_resource type="Script" path="res://scenes/sandbox/PathingTest.cs" id="1_u8fxg"]
-[ext_resource type="Texture2D" uid="uid://rk2liiunrpxi" path="res://assets/sprites/nomad.png" id="2_kc216"]
+[ext_resource type="Texture2D" uid="uid://c52f7i5aqfl18" path="res://assets/sprites/cadet.png" id="3_lp73t"]
+[ext_resource type="PackedScene" uid="uid://bj7twxghy81au" path="res://components/HealthMeter.tscn" id="3_mbk1i"]
 [ext_resource type="PackedScene" uid="uid://dhxstqph5crc1" path="res://components/ProgressMeter.tscn" id="4_dvgls"]
 
 [sub_resource type="Curve2D" id="Curve2D_b82uo"]
@@ -15,23 +16,31 @@ point_count = 15
 script = ExtResource("1_u8fxg")
 _meter1 = NodePath("ProgressMeter")
 
-[node name="PlayerPath" type="Node2D" parent="." node_paths=PackedStringArray("_environmentPath", "_playerSprite", "_clockButton")]
+[node name="PlayerPath" type="Node2D" parent="." node_paths=PackedStringArray("_environmentPath", "_playerNode", "_clockButton")]
 script = ExtResource("1_ta15j")
 _environmentPath = NodePath("Path2D")
-_playerSprite = NodePath("Sprite2D")
-_playerSpeed = 25.0
+_playerNode = NodePath("PlayerNode")
 _clockButton = NodePath("../UI/ClockButton")
+
+[node name="PlayerNode" type="Node2D" parent="PlayerPath"]
+
+[node name="HealthMeter" parent="PlayerPath/PlayerNode" instance=ExtResource("3_mbk1i")]
+position = Vector2(-6, -54)
+scale = Vector2(0.5, 0.5)
+CurrentHealth = 75
+
+[node name="CadetSprite" type="Sprite2D" parent="PlayerPath/PlayerNode"]
+position = Vector2(2, -25)
+scale = Vector2(2, 2)
+texture = ExtResource("3_lp73t")
 
 [node name="Path2D" type="Path2D" parent="PlayerPath"]
 curve = SubResource("Curve2D_b82uo")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerPath"]
-position = Vector2(685, 87)
-texture = ExtResource("2_kc216")
-
 [node name="ProgressMeter" parent="." instance=ExtResource("4_dvgls")]
 position = Vector2(871, 122)
-CurrentValue = 5
+scale = Vector2(1.88, 1.64)
+MaxValue = 0
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

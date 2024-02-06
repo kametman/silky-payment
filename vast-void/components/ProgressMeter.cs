@@ -3,9 +3,9 @@ using System;
 
 namespace VastVoid.Components;
 
+[Tool]
 public partial class ProgressMeter : Node2D
 {
-	private int _maxValue = 100;
 	[Export]public int MaxValue
 	{
 		get { return _maxValue; }
@@ -15,25 +15,38 @@ public partial class ProgressMeter : Node2D
 			CalculateProgressValue();
 		}
 	}
-
-	private int _currentValue = 0;
 	[Export]public int CurrentValue
 	{
 		get { return _currentValue; }
 		set 
 		{
 			_currentValue = value;
-			CalculateProgressValue();
+			 CalculateProgressValue();
+		}
+	}
+	[Export]public Color MeterColor
+	{
+		get { return _meterColor; }
+		set 
+		{
+			_meterColor = value;
+			UpdateMeterColor();
 		}
 	}
 
-	[Export]private Sprite2D _progressSprite;
-
+	private int _maxValue = 100;
+	private int _currentValue = 100;
+	private Color _meterColor = Colors.White;
 	private bool _initialized = false;
 	private float _progressValue;
 
+	private Sprite2D _progressSprite;
+	
 	public override void _Ready()
 	{
+		_progressSprite = GetNode<Sprite2D>("ProgressSprite");
+		UpdateMeterColor();
+
 		_initialized = true;
 	}
 
@@ -52,5 +65,11 @@ public partial class ProgressMeter : Node2D
 		if (progressTween == null) { return; }
 
 		progressTween.TweenProperty(this, "_progressValue", newProgressValue, 0.1f);
+	}
+
+	private void UpdateMeterColor()
+	{
+		if (_progressSprite == null) { return; }
+		_progressSprite.SelfModulate = _meterColor;
 	}
 }

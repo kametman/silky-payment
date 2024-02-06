@@ -11,6 +11,11 @@ public partial class SignalBus : Node
 	public static readonly string CLOCK_LONG_TICKED = "ClockLongTicked";
 	[Signal]public delegate void ClockLongTickedEventHandler();
 	#endregion
+
+	#region card hand events
+	public static readonly string PLAYING_CARD_CLICKED = "PlayingCardClicked";
+	[Signal]public delegate void PlayingCardClickedEventHandler(int cardIndex);
+	#endregion
 	
 	private static SignalBus _instance = null;
 	public static SignalBus Instance

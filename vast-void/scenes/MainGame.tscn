@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://chbsw3fub48p0"]
+
+[ext_resource type="Script" path="res://scenes/MainGame.cs" id="1_e4bpk"]
+[ext_resource type="PackedScene" uid="uid://cs0kwl8p6k5cb" path="res://components/MainGameUI.tscn" id="2_ise80"]
+[ext_resource type="Texture2D" uid="uid://xdbu3ln0s7oc" path="res://assets/sprites/tower_big.png" id="3_igm44"]
+[ext_resource type="PackedScene" uid="uid://cjbg22mp0qar6" path="res://components/CardHand.tscn" id="4_8jtso"]
+
+[node name="MainGame" type="Node2D" node_paths=PackedStringArray("_uiNode", "_cardHand")]
+script = ExtResource("1_e4bpk")
+_uiNode = NodePath("MainGameUI")
+_cardHand = NodePath("CardHand")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(30, 160)
+texture = ExtResource("3_igm44")
+
+[node name="MainGameUI" parent="." instance=ExtResource("2_ise80")]
+visible = false
+offset_left = 268.0
+offset_top = 26.0
+offset_right = 268.0
+offset_bottom = 26.0
+mouse_filter = 1
+
+[node name="CardHand" parent="." instance=ExtResource("4_8jtso")]
+position = Vector2(83, 205)
+_cardsInHand = PackedInt32Array(18, 15, 16, 16, 1)

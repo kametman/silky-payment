@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjbg22mp0qar6"]
+
+[ext_resource type="Script" path="res://components/CardHand.cs" id="1_l72ho"]
+[ext_resource type="Texture2D" uid="uid://cd5n28sgsjel0" path="res://assets/sprites/card_cursor.png" id="2_fgfle"]
+[ext_resource type="PackedScene" uid="uid://dddunxd8spb2d" path="res://components/PlayingCard.tscn" id="2_po3pc"]
+
+[node name="CardHand" type="Node2D"]
+script = ExtResource("1_l72ho")
+_cardsInHand = PackedInt32Array(21, 10, 25, 5, 2)
+
+[node name="PlayingCards" type="Node2D" parent="."]
+
+[node name="PlayingCardA" parent="PlayingCards" instance=ExtResource("2_po3pc")]
+position = Vector2(-64, 0)
+scale = Vector2(2, 2)
+_cardValue = 21
+
+[node name="PlayingCardB" parent="PlayingCards" instance=ExtResource("2_po3pc")]
+position = Vector2(-32, 0)
+scale = Vector2(2, 2)
+_cardValue = 10
+
+[node name="PlayingCardC" parent="PlayingCards" instance=ExtResource("2_po3pc")]
+scale = Vector2(2, 2)
+_cardValue = 25
+
+[node name="PlayingCardD" parent="PlayingCards" instance=ExtResource("2_po3pc")]
+position = Vector2(32, 0)
+scale = Vector2(2, 2)
+_cardValue = 5
+
+[node name="PlayingCardE" parent="PlayingCards" instance=ExtResource("2_po3pc")]
+position = Vector2(64, 0)
+scale = Vector2(2, 2)
+_cardValue = 2
+
+[node name="CursorSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(64, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fgfle")
