@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dddunxd8spb2d"]
 
-[ext_resource type="Texture2D" uid="uid://drxn8ne74ck1o" path="res://assets/sprites/cards.png" id="1_3jwtb"]
 [ext_resource type="Script" path="res://components/PlayingCard.cs" id="1_y4l8g"]
-[ext_resource type="Texture2D" uid="uid://bnk7nmjm5daap" path="res://assets/sprites/card_back.png" id="2_q0ktf"]
+[ext_resource type="Texture2D" uid="uid://drxn8ne74ck1o" path="res://assets/sprites/cards/cards.png" id="2_lpksu"]
+[ext_resource type="Texture2D" uid="uid://bnk7nmjm5daap" path="res://assets/sprites/cards/card_back.png" id="3_gu6ie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5uja"]
 size = Vector2(12, 14)
@@ -16,12 +16,12 @@ script = ExtResource("1_y4l8g")
 
 [node name="CardFrontSprite" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_3jwtb")
+texture = ExtResource("2_lpksu")
 hframes = 13
 vframes = 4
 
 [node name="CardBackSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_q0ktf")
+texture = ExtResource("3_gu6ie")
 
 [node name="CardCollision2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v5uja")

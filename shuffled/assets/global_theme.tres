@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dr2gqme40k2w7"]
+
+[ext_resource type="FontFile" uid="uid://58ygfa3r6af" path="res://assets/fonts/ClassicShit.ttf" id="1_qvwgw"]
+
+[resource]
+default_font = ExtResource("1_qvwgw")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6vajkn5wdpty"]
+
+[ext_resource type="Script" path="res://components/CardSlot.cs" id="1_bga38"]
+[ext_resource type="Texture2D" uid="uid://btx5lqvoy83nm" path="res://assets/sprites/cards/card_slot_cursor.png" id="1_hrv6r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2j3n"]
+atlas = ExtResource("1_hrv6r")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ufd"]
+atlas = ExtResource("1_hrv6r")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3xel"]
+atlas = ExtResource("1_hrv6r")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foyu4"]
+atlas = ExtResource("1_hrv6r")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0vxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2j3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ufd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3xel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foyu4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CardSlot" type="Node2D" node_paths=PackedStringArray("_cardSlotCursor")]
+script = ExtResource("1_bga38")
+_cardSlotCursor = NodePath("CursorSprite")
+
+[node name="CursorSprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+sprite_frames = SubResource("SpriteFrames_n0vxc")

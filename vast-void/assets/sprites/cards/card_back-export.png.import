@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nor55gjfxg1f"
-path="res://.godot/imported/space_craft.png-e1c5b5a0949318d0e965792d786436e5.ctex"
+uid="uid://jb8eqvtlkk4s"
+path="res://.godot/imported/card_back-export.png-93b88d12779c9d95cd7e7bb06ba946d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/space_craft.png"
-dest_files=["res://.godot/imported/space_craft.png-e1c5b5a0949318d0e965792d786436e5.ctex"]
+source_file="res://assets/sprites/cards/card_back-export.png"
+dest_files=["res://.godot/imported/card_back-export.png-93b88d12779c9d95cd7e7bb06ba946d7.ctex"]
 
 [params]
 

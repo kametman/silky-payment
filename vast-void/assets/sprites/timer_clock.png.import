@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnk7nmjm5daap"
-path="res://.godot/imported/card_back.png-a9a4322aa0cec2739d268aa64008b3c5.ctex"
+uid="uid://dp30uhkaf3xv1"
+path="res://.godot/imported/timer_clock.png-7c42c9a5ef51480de4fa3a8f0b7fd750.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/card_back.png"
-dest_files=["res://.godot/imported/card_back.png-a9a4322aa0cec2739d268aa64008b3c5.ctex"]
+source_file="res://assets/sprites/timer_clock.png"
+dest_files=["res://.godot/imported/timer_clock.png-7c42c9a5ef51480de4fa3a8f0b7fd750.ctex"]
 
 [params]
 

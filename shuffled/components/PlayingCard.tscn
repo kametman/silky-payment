@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgkvw0mvdfi4r"]
+
+[ext_resource type="Script" path="res://components/PlayingCard.cs" id="1_27cvs"]
+[ext_resource type="Texture2D" uid="uid://loic74vd86pd" path="res://assets/sprites/cards/standard_cards.png" id="1_188tf"]
+[ext_resource type="Texture2D" uid="uid://dux1161u5v1c" path="res://assets/sprites/cards/card_back.png" id="2_w2p16"]
+
+[node name="PlayingCard" type="Node2D"]
+script = ExtResource("1_27cvs")
+
+[node name="CardFrontSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_188tf")
+hframes = 13
+vframes = 4
+
+[node name="CardBackSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_w2p16")

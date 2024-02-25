@@ -37,7 +37,7 @@ public partial class MainGame : Node2D
 		_idleClock.PauseClock();
 		_idleClock.SetClockParams(_tickInterval, _tickEventCount);
 
-		SignalBus.Instance.ClockLongTicked += () => GetNewHand();
+		// SignalBus.Instance.ClockLongTicked += () => GetNewHand();
 
 		_idleClock.StartClock();
 	}

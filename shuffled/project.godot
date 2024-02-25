@@ -10,15 +10,9 @@ config_version=5
 
 [application]
 
-config/name="vast-void"
-run/main_scene="res://scenes/MainGame.tscn"
+config/name="shuffled"
 config/features=PackedStringArray("4.1", "C#", "Mobile")
 config/icon="res://icon.svg"
-
-[autoload]
-
-SignalBus="*res://managers/SignalBus.cs"
-IdleClock="*res://components/IdleClock.tscn"
 
 [display]
 
@@ -28,14 +22,14 @@ window/stretch/mode="viewport"
 
 [dotnet]
 
-project/assembly_name="vast-void"
+project/assembly_name="shuffled"
 
-[layer_names]
+[gui]
 
-2d_physics/layer_8="cards"
+theme/custom="res://assets/global_theme.tres"
+theme/custom_font="res://assets/fonts/ClassicShit.ttf"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(0.12549, 0.12549, 0.12549, 1)

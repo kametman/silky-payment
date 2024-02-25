@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctjlgnitour1q"]
+
+[ext_resource type="Texture2D" uid="uid://c64whrwbc6k0g" path="res://assets/sprites/denizens.png" id="1_p47v2"]
+
+[node name="Denizen" type="Node2D"]
+
+[node name="DenizenSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_p47v2")
+hframes = 8
+vframes = 10
+frame = 15

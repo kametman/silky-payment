@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://7t6xts6tlu8i"]
+
+[ext_resource type="Script" path="res://components/CardSlot.cs" id="1_26f8c"]
+[ext_resource type="Texture2D" uid="uid://c2dgdgq5p20t0" path="res://assets/sprites/cards/card_slot.png" id="2_5uofm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3f2n"]
+size = Vector2(24, 28)
+
+[node name="CardSlot" type="Area2D"]
+script = ExtResource("1_26f8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c3f2n")
+
+[node name="SlotSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+texture = ExtResource("2_5uofm")
+
+[connection signal="input_event" from="." to="." method="OnCardSlotInputEvent"]
+[connection signal="mouse_entered" from="." to="." method="OnCardSlotMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="OnCardSlotMouseExited"]
