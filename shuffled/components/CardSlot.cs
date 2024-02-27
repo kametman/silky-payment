@@ -5,6 +5,8 @@ namespace Shuffled.Components;
 
 public partial class CardSlot : Area2D
 {
+	[Export]private bool _hideSlotSprite = false;
+
 	public bool HasCard
 	{
 		get { return _currentCard != null; }
@@ -21,6 +23,8 @@ public partial class CardSlot : Area2D
 	public override void _Ready()
 	{
 		_slotSprite = GetNode<Sprite2D>("SlotSprite");
+
+		_slotSprite.Visible = !_hideSlotSprite;
 	}
 
 	public PlayingCard SetCard(PlayingCard newCard)
@@ -35,6 +39,14 @@ public partial class CardSlot : Area2D
 		if (newCard != null) { AddChild(newCard); }
 		
 		return displacedCard;
+	}
+
+	public void FlipCard(bool? isFaceDown = null)
+	{
+		if (!HasCard) { return; }
+
+		if (!isFaceDown.HasValue) { _currentCard.IsFaceDown = !_currentCard.IsFaceDown; }
+		else { _currentCard.IsFaceDown = isFaceDown.Value; }
 	}
 
 	public void OnCardSlotInputEvent(Node viewport, InputEvent @event, int shapeIndex)

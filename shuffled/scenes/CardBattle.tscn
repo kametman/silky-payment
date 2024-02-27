@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuntmmx2ea21l"]
+
+[ext_resource type="Script" path="res://scenes/CardBattle.cs" id="1_n21q8"]
+[ext_resource type="PackedScene" uid="uid://jqbbesee2ryn" path="res://components/BattleHand.tscn" id="2_3pu51"]
+[ext_resource type="PackedScene" uid="uid://47xswcpn5nbs" path="res://components/CardBattleUI.tscn" id="3_wwf3y"]
+[ext_resource type="Texture2D" uid="uid://cc376dkm3hrrd" path="res://assets/sprites/cards/card_deck.png" id="4_b6sso"]
+[ext_resource type="Texture2D" uid="uid://dcrprp3oidexe" path="res://assets/sprites/timer_clock.png" id="5_op6pr"]
+
+[node name="CardBattle" type="Node2D" node_paths=PackedStringArray("_battleHands", "_battleTimer", "_deckCountLabel", "_clockSprite")]
+script = ExtResource("1_n21q8")
+_battleHands = [NodePath("BattleHands/BattleHandA"), NodePath("BattleHands/BattleHandB"), NodePath("BattleHands/BattleHandC"), NodePath("BattleHands/BattleHandD")]
+_battleTimer = NodePath("BattleTimer")
+_deckCountLabel = NodePath("DeckSprite/DeckCountLabel")
+_clockSprite = NodePath("ClockSprite")
+
+[node name="BattleHands" type="Node2D" parent="."]
+position = Vector2(8, 348)
+
+[node name="BattleHandA" parent="BattleHands" instance=ExtResource("2_3pu51")]
+position = Vector2(72, 72)
+
+[node name="BattleHandB" parent="BattleHands" instance=ExtResource("2_3pu51")]
+position = Vector2(232, 4)
+
+[node name="BattleHandC" parent="BattleHands" instance=ExtResource("2_3pu51")]
+position = Vector2(72, 4)
+
+[node name="BattleHandD" parent="BattleHands" instance=ExtResource("2_3pu51")]
+position = Vector2(232, 72)
+
+[node name="CardBattleUI" parent="." instance=ExtResource("3_wwf3y")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="DeckSprite" type="Sprite2D" parent="."]
+position = Vector2(700, 32)
+texture = ExtResource("4_b6sso")
+
+[node name="DeckCountLabel" type="Label" parent="DeckSprite"]
+offset_left = -12.0
+offset_top = 16.0
+offset_right = 12.0
+offset_bottom = 35.0
+text = "52"
+horizontal_alignment = 1
+
+[node name="BattleTimer" type="Timer" parent="."]
+
+[node name="ClockSprite" type="Sprite2D" parent="."]
+position = Vector2(756, 36)
+scale = Vector2(2, 2)
+texture = ExtResource("5_op6pr")
+hframes = 5
+
+[connection signal="timeout" from="BattleTimer" to="." method="OnBattleTimerTimeout"]

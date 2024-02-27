@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://jqbbesee2ryn"]
+
+[ext_resource type="Script" path="res://components/BattleHand.cs" id="1_fnjmf"]
+[ext_resource type="PackedScene" uid="uid://7t6xts6tlu8i" path="res://components/CardSlot.tscn" id="2_yhpqq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oebw3"]
+size = Vector2(28, 24)
+
+[node name="BattleHand" type="Area2D"]
+script = ExtResource("1_fnjmf")
+
+[node name="CardSlotA" parent="." instance=ExtResource("2_yhpqq")]
+position = Vector2(56, 0)
+_hideSlotSprite = true
+
+[node name="CardSlotB" parent="." instance=ExtResource("2_yhpqq")]
+position = Vector2(28, 0)
+_hideSlotSprite = true
+
+[node name="CardSlotC" parent="." instance=ExtResource("2_yhpqq")]
+_hideSlotSprite = true
+
+[node name="CardSlotD" parent="." instance=ExtResource("2_yhpqq")]
+position = Vector2(-28, 0)
+_hideSlotSprite = true
+
+[node name="CardSlotE" parent="." instance=ExtResource("2_yhpqq")]
+position = Vector2(-56, 0)
+_hideSlotSprite = true
+
+[node name="HandScoreCollision" type="CollisionShape2D" parent="."]
+position = Vector2(52, -32)
+shape = SubResource("RectangleShape2D_oebw3")
+
+[node name="HandScoreLabel" type="Label" parent="."]
+offset_left = 36.0
+offset_top = -48.0
+offset_right = 68.0
+offset_bottom = -13.0
+theme_override_font_sizes/font_size = 32
+text = "21
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="BonusDamageLabel" type="Label" parent="."]
+offset_left = 76.0
+offset_top = -36.0
+offset_right = 108.0
+offset_bottom = -10.0
+text = "10
+"
+vertical_alignment = 1
+
+[node name="PenaltyDamageLabel" type="Label" parent="."]
+modulate = Color(0.752941, 0.25098, 0.25098, 1)
+offset_left = 72.0
+offset_top = -36.0
+offset_right = 104.0
+offset_bottom = -10.0
+text = "-10
+"
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="OnBattleHandInputEvent"]
